@@ -1,182 +1,112 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" itemscope itemtype="https://schema.org/LiquorStore">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PAT Cargo VAD LLC</title>
-    <style>
-        html {
-            scroll-behavior: smooth;
-        }
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f4f4f4;
-            color: #333;
-        }
-        nav {
-            background: #000;
-            color: #fff;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 30px;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        nav .logo {
-            font-size: 24px;
-            font-weight: bold;
-        }
-        nav ul {
-            list-style: none;
-            display: flex;
-            margin: 0;
-            padding: 0;
-        }
-        nav ul li {
-            margin: 0 15px;
-        }
-        nav ul li a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 16px;
-        }
-        .hero {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            padding: 80px 20px;
-            background: #111;
-            color: #fff;
-            min-height: 100vh;
-            animation: fadeIn 2s ease-in-out;
-        }
-        .hero-text {
-            max-width: 500px;
-            padding: 20px;
-            animation: slideInLeft 1.5s ease;
-        }
-        .hero-text h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-        }
-        .hero-text p {
-            font-size: 18px;
-            line-height: 1.6;
-        }
-        .hero-img img {
-            max-width: 400px;
-            width: 100%;
-            border-radius: 10px;
-            animation: slideInRight 1.5s ease;
-        }
-        .section {
-            padding: 60px 20px;
-            text-align: center;
-            max-width: 900px;
-            margin: 0 auto;
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 1s ease;
-        }
-        .section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .section h2 {
-            font-size: 32px;
-            margin-bottom: 20px;
-        }
-        .section p {
-            font-size: 18px;
-            line-height: 1.8;
-            color: #555;
-        }
-        .contact {
-            background: #e9e9e9;
-            padding: 60px 20px;
-        }
-        footer {
-            background: #000;
-            color: #fff;
-            text-align: center;
-            padding: 20px;
-            font-size: 14px;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        @keyframes slideInLeft {
-            from { transform: translateX(-50px); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-        @keyframes slideInRight {
-            from { transform: translateX(50px); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tipple’s Liquor & Market LLC — Directory Profile</title>
+  <style>
+    :root{
+      --brand-red:#c62828; --brand-green:#2e7d32; --ink:#111827;
+      --muted:#6b7280; --bg:#f8fafc; --card:#ffffff; --radius:16px;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+      background:var(--bg);color:var(--ink)}
+    a{color:var(--brand-green);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:980px;margin:32px auto;padding:0 16px}
+    .card{background:var(--card);border-radius:var(--radius);
+      box-shadow:0 8px 30px rgba(0,0,0,.06);padding:20px;margin-bottom:20px}
+    header.card{display:flex;gap:24px;align-items:center}
+    .title{margin:0;line-height:1.1;font-size:clamp(22px,3vw,36px)}
+    .subtitle{margin:6px 0 0;color:var(--muted)}
+    .logo{width:84px;height:84px;border-radius:14px;object-fit:cover;border:3px solid var(--brand-red)}
+    .badge{display:inline-block;padding:4px 10px;border-radius:999px;background:#e8f5e9;color:var(--brand-green);font-weight:700;font-size:12px}
+    .section-title{font-size:18px;margin:0 0 12px;padding-left:10px;border-left:6px solid var(--brand-red)}
+    .kv{display:grid;grid-template-columns:120px 1fr;gap:10px;padding:8px 0}
+    .kv .k{color:var(--muted)}
+    .pill{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;background:#fff5f5;border:1px solid #fbd5d5;color:var(--brand-red);border-radius:999px;font-weight:700}
+    .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px}
+    .gallery img{width:100%;height:140px;object-fit:cover;border-radius:12px;border:2px solid #e5e7eb}
+    .cta{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:12px;font-weight:700;border:2px solid transparent}
+    .btn.red{background:var(--brand-red);color:#fff}
+    .btn.green{background:var(--brand-green);color:#fff}
+    .btn.outline{background:transparent;border-color:#e5e7eb;color:var(--ink)}
+    footer{text-align:center;color:var(--muted);padding:24px 0 40px;font-size:12px}
+    @media (max-width:540px){header.card{flex-direction:column;align-items:flex-start}.kv{grid-template-columns:1fr}}
+  </style>
 </head>
 <body>
+  <div class="wrap">
+    <!-- Header -->
+    <header class="card">
+      <img class="logo" src="https://t3.ftcdn.net/jpg/01/03/60/12/360_F_103601208_HdSX52hKjlnPmp6VYtvcPA05J0lgieHp.jpg" alt="Storefront or logo" />
+      <div>
+        <h1 class="title" itemprop="name">Tipple’s Liquor &amp; Market LLC</h1>
+        <p class="subtitle">Retail • <span class="badge">Beer, Wine &amp; Liquor Retailers</span></p>
+      </div>
+    </header>
 
-    <nav>
-        <div class="logo">PAT Cargo VAD LLC</div>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+    <!-- Overview -->
+    <section class="card" id="about">
+      <h2 class="section-title">Overview</h2>
+      <p itemprop="description">
+        Liquor store operating within the Retail Trade sector. Categories include
+        Beer, Wine, and Liquor Retailers; Food and Beverage Retailers.
+      </p>
+      <div class="cta" style="margin-top:12px">
+        <a class="btn red" href="#contact">Contact</a>
+        <a class="btn green" href="#gallery">Photos</a>
+        <a class="btn outline" href="#details">Details</a>
+      </div>
+    </section>
 
-    <div class="hero" id="home">
-        <div class="hero-text">
-            <h1>PAT Cargo VAD LLC</h1>
-            <p>Your trusted partner in transportation and warehousing. We provide reliable cargo services and storage solutions to meet your business needs with efficiency and care.</p>
+    <!-- Contact -->
+    <section class="card" id="contact">
+      <h2 class="section-title">Contact</h2>
+      <div class="kv" itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+        <div class="k">Address</div>
+        <div>
+          <span itemprop="streetAddress">7757 Katella Ave</span>,
+          <span itemprop="addressLocality">Stanton</span>,
+          <span itemprop="addressRegion">CA</span>
+          <span itemprop="postalCode">90680-4901</span>,
+          <span itemprop="addressCountry">United States</span>
         </div>
-        <div class="hero-img">
-            <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=934&q=80" alt="Cargo Services">
-        </div>
-    </div>
+      </div>
+      <div class="kv">
+        <div class="k">Phone</div>
+        <div><a itemprop="telephone" href="tel:+19048719318">904-871-9318</a></div>
+      </div>
+      <div class="kv">
+        <div class="k">Email</div>
+        <div><a itemprop="email" href="mailto:info@valverin.shop">info@valverin.shop</a></div>
+      </div>
+    </section>
 
-    <div class="section" id="about">
-        <h2>About Us</h2>
-        <p>PAT Cargo VAD LLC is a Domestic LLC based in Arizona, offering specialized services in transportation and warehousing. With a focus on reliability and customer satisfaction, we have been serving businesses since 2021.</p>
-        <p><strong>Registered Address:</strong><br>
-        2902 W Sweetwater Ave, Apt 2190, Phoenix, AZ 85029, United States</p>
-    </div>
+    <!-- Details -->
+    <section class="card" id="details">
+      <h2 class="section-title">Business Details</h2>
+      <div class="kv"><div class="k">Industry</div><div>Beer, Wine &amp; Liquor Retailers; Food &amp; Beverage Retail; Liquor Stores</div></div>
+      <div class="kv"><div class="k">Employees</div><div><span class="pill">Modelled</span></div></div>
+      <div class="kv"><div class="k">Revenue</div><div><span class="pill">Not disclosed</span></div></div>
+    </section>
 
-    <div class="section contact" id="contact">
-        <h2>Contact Us</h2>
-        <p><strong>Email:</strong> <a href="mailto:contact@patcargovadllc.click">contact@patcargovadllc.click</a></p>
-        <p><strong>Agent Address:</strong><br>
-        2902 W Sweetwater Ave, Apt 2190, Phoenix, AZ 85029, United States</p>
-    </div>
+    <!-- Gallery -->
+    <section class="card" id="gallery">
+      <h2 class="section-title">Gallery</h2>
+      <div class="gallery">
+        <img src="https://avatars.mds.yandex.net/i?id=148bcfac1c7d3910163861a77dd36a2f32047c1c-9099806-images-thumbs&n=13" alt="Store image 1" />
+        <img src="https://avatars.mds.yandex.net/i?id=1a2c41b4472b030c7080b686365ba4fc35d8ee7a-5216269-images-thumbs&n=13" alt="Store image 2" />
+        <img src="https://storage.yandexcloud.net/incrussia-prod/wp-content/uploads/2019/08/iStock-979297174.jpg" alt="Stock image 3" />
+      </div>
+    </section>
 
     <footer>
-        &copy; 2025 PAT Cargo VAD LLC. All rights reserved.
+      <div>Colors used: <span style="color:var(--brand-red);font-weight:700">Red</span> &
+        <span style="color:var(--brand-green);font-weight:700">Green</span></div>
     </footer>
-
-    <script>
-        // Intersection Observer for fade-in effect
-        const sections = document.querySelectorAll('.section');
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, {
-            threshold: 0.1
-        });
-
-        sections.forEach(section => {
-            observer.observe(section);
-        });
-    </script>
-
+  </div>
 </body>
 </html>
